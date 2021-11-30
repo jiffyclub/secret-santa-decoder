@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./secretsanta.css">
+        <script src="./secretsanta.js"></script>
+    </head>
+    <body>
+        <div id="body-div">
+            <div id="form-div">
+                <form>
+                    <label><h1>Key:</h1>
+                        <input type="text" id="santa-key">
+                    </label>
+                    <br>
+                    <label><h1>Codename:</h1>
+                        <input type="text" id="santa-name">
+                    </label>
+                    <br><br>
+                    <button type="button" onclick="run_decode()">Decode!</button>
+                </form>
+            </div>
+            <div id="output-div">
+                <p id="santa-output"></p>
+            </div>
+        </div>
+    </body>
+</html>
