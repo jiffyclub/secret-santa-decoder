@@ -63,11 +63,14 @@ async function type_text(str, element) {
 async function run_decode() {
     const key_value = document.getElementById('santa-key').value;
     const name_value = document.getElementById('santa-name').value;
-    const name = decode(key_value, name_value);
-    await type_text(
-        `Your Secret Santa recipient is: ${name}`,
-        document.getElementById('santa-output')
-    );
-    await type_text('Keep it secret', document.getElementById('secret-output'));
-    await type_text('Keep it safe', document.getElementById('safe-output'));
+
+    if (!!key_value && !!name_value) {
+        const name = decode(key_value, name_value);
+        await type_text(
+            `Your Secret Santa recipient is: ${name}`,
+            document.getElementById('santa-output')
+        );
+        await type_text('Keep it secret', document.getElementById('secret-output'));
+        await type_text('Keep it safe', document.getElementById('safe-output'));
+    }
 }
