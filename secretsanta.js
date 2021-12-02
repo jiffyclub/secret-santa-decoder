@@ -60,17 +60,25 @@ async function type_text(str, element) {
 }
 
 
+async function render_output(recipient) {
+    await type_text(
+        `Your Secret Santa recipient is: ${recipient}`,
+        document.getElementById('santa-output')
+    );
+    await type_text('Keep it secret', document.getElementById('secret-output'));
+    await type_text('Keep it safe', document.getElementById('safe-output'));
+}
+
+
 async function run_decode() {
     const key_value = document.getElementById('santa-key').value;
-    const name_value = document.getElementById('santa-name').value;
+    const recipient_value = document.getElementById('santa-name').value;
 
-    if (!!key_value && !!name_value) {
-        const name = decode(key_value, name_value);
-        await type_text(
-            `Your Secret Santa recipient is: ${name}`,
-            document.getElementById('santa-output')
-        );
-        await type_text('Keep it secret', document.getElementById('secret-output'));
-        await type_text('Keep it safe', document.getElementById('safe-output'));
+    if (key_value.toLowerCase() === 'demo' && recipient_value.toLowerCase() === 'demo') {
+        render_output('YOU');
+    }
+    else if (!!key_value && !!recipient_value) {
+        const recipient = decode(key_value, recipient_value);
+        render_output(recipient);
     }
 }
